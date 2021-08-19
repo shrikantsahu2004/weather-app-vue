@@ -33,7 +33,6 @@
           <div class="sunrise">Sunrise: <Date :dateObject="new Date(weather.sys.sunrise*1000)" standard=false /></div>
           <div class="sunset">Sunset: <Date :dateObject="new Date(weather.sys.sunset*1000)" standard=false /></div>
           <div class="wind-speed">Wind: {{weather.wind.speed}} m/s</div>
-
         </div>
 
     </div>
@@ -54,7 +53,7 @@ export default {
   name: 'App',
   data() {
     return {
-      api_key: '8935adbfd455fa83fbd7207848cac580',
+      api_key: process.env.VUE_APP_API_KEY,
       url: 'https://api.openweathermap.org/data/2.5/',
       city: '',
       weather: {},
@@ -98,7 +97,7 @@ export default {
     showMoreInfo() {
       var x = document.getElementById("additional-info");
       var y = document.getElementById("extra-button");
-      if (x.style.display === "none") {
+      if (x.style.display == "none") {
         x.style.display = "block";
         y.innerHTML = "Show Less";
       } else {
